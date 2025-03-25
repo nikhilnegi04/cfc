@@ -1,4 +1,4 @@
-# theme.py
+# Updated theme.py
 """
 Theme configuration for the CFC Recovery Insights Dashboard.
 Modify this file to change the dashboard's appearance.
@@ -6,14 +6,14 @@ Modify this file to change the dashboard's appearance.
 
 # Theme color configuration
 THEME = {
-    'PRIMARY': "#1A2B4C",      # Dark blue - primary color
-    'SECONDARY': "#A3CEF1",    # Light blue - secondary elements
+    'PRIMARY': "#123456",      # Darker blue - primary color (more focused)
+    'SECONDARY': "#B3DAF1",    # Softer blue - secondary elements
     'ACCENT': "#E63946",       # Red - for alerts and highlights
     'WARNING': "#F4A261",      # Orange - for warnings
     'SUCCESS': "#2A9D8F",      # Green - for positive indicators
     'BACKGROUND': "#F8F9FA",   # Light background
     'CARD': "#FFFFFF",         # Card background
-    'TEXT': "#1A2B4C",         # Primary text color
+    'TEXT': "#123456",         # Darker primary text color
     'TEXT_LIGHT': "#6C757D"    # Secondary text color
 }
 
@@ -25,117 +25,64 @@ def apply_theme_css():
     <style>
         /* Base styles */
         .main .block-container {{
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }}
         
-        /* Card styling */
+        /* Card styling with gradient */
         .metric-card {{
             background-color: {THEME['CARD']};
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background: linear-gradient(135deg, {THEME['CARD']} 0%, #f1f3f5 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }}
-        .workload-panel {{
-            background-color: {THEME['CARD']};
-            border-left: 5px solid {THEME['PRIMARY']};
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }}
-        .metric-pill {{
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 30px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 14px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }}
         .metric-card:hover {{
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }}
-        .metric-value {{
-            font-size: 28px;
-            font-weight: 700;
-            color: {THEME['PRIMARY']};
-        }}
-        .metric-label {{
-            font-size: 14px;
-            color: {THEME['TEXT_LIGHT']};
-            margin-bottom: 5px;
-        }}
-        
-        /* Status box styling */
-        .status-box {{
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }}
-        .status-icon {{
-            font-size: 24px;
-            margin-right: 10px;
-        }}
-        
-        /* Chart area */
-        .chart-area {{
+
+        /* Workload panel */
+        .workload-panel {{
             background-color: {THEME['CARD']};
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid {THEME['PRIMARY']};
+            border-radius: 12px;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }}
         
-        /* Header */
-        .dashboard-header {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }}
-        .dashboard-title {{
-            font-size: 36px;
-            font-weight: 800;
-            color: {THEME['PRIMARY']};
-            margin: 0;
-        }}
-        .user-info {{
-            text-align: right;
-            font-size: 14px;
+        /* Refined metric pill */
+        .metric-pill {{
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            background-color: {THEME['SECONDARY']};
             color: {THEME['TEXT']};
         }}
-        
-        /* Recommendations panel */
-        .recommendation-panel {{
-            background-color: {THEME['CARD']};
-            border-left: 5px solid {THEME['SECONDARY']};
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        /* Larger metric value */
+        .metric-value {{
+            font-size: 32px;
+            font-weight: 800;
+            color: {THEME['PRIMARY']};
         }}
         
-        /* Weekly summary */
-        .weekly-summary {{
-            background-color: {THEME['CARD']};
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }}
-        
-        /* Footer */
-        .dashboard-footer {{
-            text-align: center;
-            padding: 20px;
+        /* Refined text labels */
+        .metric-label {{
+            font-size: 15px;
             color: {THEME['TEXT_LIGHT']};
-            font-size: 12px;
+            margin-bottom: 7px;
         }}
-    </style>
-    """
+
+        /* Status box styling with accent border */
+        .status-box {{
+            padding: 22px;
+            border-radius: 12px;
+            border-left:

@@ -6,7 +6,7 @@ Modify this file to change the dashboard's appearance.
 
 # Theme color configuration
 THEME = {
-    'PRIMARY': "#1A2B4C",      # Dark blue - primary color
+    'PRIMARY': "#8d2a96",      # Dark blue - primary color
     'SECONDARY': "#A3CEF1",    # Light blue - secondary elements
     'ACCENT': "#E63946",       # Red - for alerts and highlights
     'WARNING': "#F4A261",      # Orange - for warnings

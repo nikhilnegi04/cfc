@@ -1,3 +1,4 @@
+# theme.py
 """
 Theme configuration for the CFC Recovery Insights Dashboard.
 Modify this file to change the dashboard's appearance.
@@ -5,15 +6,15 @@ Modify this file to change the dashboard's appearance.
 
 # Theme color configuration
 THEME = {
-    'PRIMARY': "#4A90E2",      # Blue - primary color
-    'SECONDARY': "#50E3C2",    # Teal - secondary elements
-    'ACCENT': "#FF6B6B",       # Coral - for alerts and highlights
-    'WARNING': "#FFA726",      # Orange - for warnings
-    'SUCCESS': "#66BB6A",      # Green - for positive indicators
-    'BACKGROUND': "#F5F7FA",   # Light background
+    'PRIMARY': "#1A2B4C",      # Dark blue - primary color
+    'SECONDARY': "#A3CEF1",    # Light blue - secondary elements
+    'ACCENT': "#E63946",       # Red - for alerts and highlights
+    'WARNING': "#F4A261",      # Orange - for warnings
+    'SUCCESS': "#2A9D8F",      # Green - for positive indicators
+    'BACKGROUND': "#F8F9FA",   # Light background
     'CARD': "#FFFFFF",         # Card background
-    'TEXT': "#2C3E50",         # Primary text color
-    'TEXT_LIGHT': "#7F8C8D"    # Secondary text color
+    'TEXT': "#1A2B4C",         # Primary text color
+    'TEXT_LIGHT': "#6C757D"    # Secondary text color
 }
 
 def apply_theme_css():
@@ -23,87 +24,72 @@ def apply_theme_css():
     return f"""
     <style>
         /* Base styles */
-        body {{
-            font-family: 'Roboto', sans-serif;
-            background-color: {THEME['BACKGROUND']};
-            color: {THEME['TEXT']};
-        }}
         .main .block-container {{
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }}
         
         /* Card styling */
         .metric-card {{
             background-color: {THEME['CARD']};
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }}
-        .metric-card:hover {{
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }}
-        .metric-value {{
-            font-size: 36px;
-            font-weight: 700;
-            color: {THEME['PRIMARY']};
-            margin-bottom: 10px;
-        }}
-        .metric-label {{
-            font-size: 16px;
-            color: {THEME['TEXT_LIGHT']};
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }}
-        
-        /* Workload panel */
         .workload-panel {{
             background-color: {THEME['CARD']};
             border-left: 5px solid {THEME['PRIMARY']};
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }}
-        
-        /* Metric pill */
         .metric-pill {{
             display: inline-block;
-            padding: 6px 15px;
+            padding: 4px 12px;
             border-radius: 30px;
-            margin-right: 10px;
-            margin-bottom: 10px;
+            margin-right: 8px;
+            margin-bottom: 8px;
             font-weight: 500;
             font-size: 14px;
-            background-color: {THEME['SECONDARY']};
-            color: {THEME['CARD']};
+        }}
+        .metric-card:hover {{
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }}
+        .metric-value {{
+            font-size: 28px;
+            font-weight: 700;
+            color: {THEME['PRIMARY']};
+        }}
+        .metric-label {{
+            font-size: 14px;
+            color: {THEME['TEXT_LIGHT']};
+            margin-bottom: 5px;
         }}
         
         /* Status box styling */
         .status-box {{
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            background-color: {THEME['CARD']};
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }}
         .status-icon {{
-            font-size: 28px;
-            margin-right: 15px;
+            font-size: 24px;
+            margin-right: 10px;
         }}
         
         /* Chart area */
         .chart-area {{
             background-color: {THEME['CARD']};
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            padding: 25px;
-            margin-top: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
         }}
         
         /* Header */
@@ -111,21 +97,17 @@ def apply_theme_css():
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: {THEME['CARD']};
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
         }}
         .dashboard-title {{
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 800;
             color: {THEME['PRIMARY']};
             margin: 0;
         }}
         .user-info {{
             text-align: right;
-            font-size: 16px;
+            font-size: 14px;
             color: {THEME['TEXT']};
         }}
         
@@ -133,31 +115,27 @@ def apply_theme_css():
         .recommendation-panel {{
             background-color: {THEME['CARD']};
             border-left: 5px solid {THEME['SECONDARY']};
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }}
         
         /* Weekly summary */
         .weekly-summary {{
             background-color: {THEME['CARD']};
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }}
         
         /* Footer */
         .dashboard-footer {{
             text-align: center;
-            padding: 25px;
+            padding: 20px;
             color: {THEME['TEXT_LIGHT']};
-            font-size: 14px;
-            margin-top: 30px;
-            background-color: {THEME['CARD']};
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            font-size: 12px;
         }}
     </style>
     """
